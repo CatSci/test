@@ -21,6 +21,6 @@ def get_driver():
 # options.add_argument('--headless')
 
 driver = get_driver()
-driver.get('http://example.com')
+driver.get('https://pubchem.ncbi.nlm.nih.gov/compound/5288826')
 st.write('test')
 st.code(driver.page_source)
