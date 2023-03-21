@@ -7,11 +7,18 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @st.experimental_singleton
 def get_driver():
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    option = Options()
+    option.add_argument('--headless')
+    option.add_argument('--no-sandbox')
+    option.add_argument('--disable-gpu')
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(options = option, service= service)
+    return driver
+#     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-options = Options()
-options.add_argument('--disable-gpu')
-options.add_argument('--headless')
+# options = Options()
+# options.add_argument('--disable-gpu')
+# options.add_argument('--headless')
 
 driver = get_driver()
 driver.get('http://example.com')
